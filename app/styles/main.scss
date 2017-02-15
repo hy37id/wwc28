@@ -3,9 +3,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:300,500|Josefin+Sans:300,300i,400,600');
 
-@import "./variables";
+@import "variables";
 
-@import "./mixins";
+@import "mixins";
 
 // BASE STYLES
 
@@ -121,7 +121,9 @@ a {
 .background-text {
   @extend %absolute;
   @extend %flex-center;
-  font: 600 calc(10em + 28vw) "Frank Ruhl Libre", serif;
+  font-family: "Frank Ruhl Libre", serif;
+  font-weight: 500;
+  font-size: calc(10em + 20vw);
   color: $white;
   text-transform: uppercase;
   white-space: nowrap;
@@ -233,6 +235,7 @@ a {
     position: relative;
     width: 40px;
     height: 40px;
+    margin-left: auto;
     padding: 0;
     background: none;
     border: 2px solid $white;
