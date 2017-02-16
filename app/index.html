@@ -93,7 +93,7 @@
     <section id="services">
       <div class="info center">
         <h2>My services</h2>
-        <h1>For me, photography is both<br>&nbsp;a hobby and a profession</h1>
+        <h1>For me, photography is both a hobby and a profession</h1>
       </div>
       <div class="links">
         <a href="#"><span>Weddings</span></a>
@@ -106,7 +106,7 @@
       <div class="info-wrapper">
         <div class="info right">
           <h2>My albums</h2>
-          <h1>I love photographing<br>&nbsp;a multitude of places<br>&nbsp;and subjects</h1>
+          <h1>I love photographing a multitude of places and subjects</h1>
           <a class="btn" href="#">View all albums</a>
         </div>
       </div>
@@ -142,7 +142,7 @@
     <section id="thoughts">
       <div class="info center">
         <h2>My thoughts</h2>
-        <h1>Apart from photography,<br>&nbsp;I also love to write</h1>
+        <h1>Apart from photography, I also love to write</h1>
       </div>
       <div class="navigation">
         <div class="button" @click="slideRight">
@@ -178,7 +178,7 @@
       <div class="info-wrapper">
         <div class="info left">
           <h2>Sophia McGregor</h2>
-          <h1>Young and avid<br>&nbsp;photographer based<br>&nbsp;in LosAngeles</h1>
+          <h1>Young and avid photographer based in Los Angeles</h1>
           <a class="btn" href="#">More about me</a>
         </div>
       </div>
@@ -187,7 +187,7 @@
     <section id="shop">
       <div class="info center">
         <h2>My shop</h2>
-        <h1>Buy high-quality prints<br>&nbsp;of my photos</h1>
+        <h1>Buy high-quality prints of my photos</h1>
       </div>
       <div class="navigation">
         <div class="button" @click="slideRight">
@@ -195,48 +195,48 @@
         </div>
         <div
           class="items-wrapper"
-          :class="{ initialized }"
+          :class="{ initialized: initialized }"
           :style="itemsWrapperStyle"
         >
           <transition
             :enter-active-class="enterClass"
             :leave-active-class="leaveClass"
           >
-            <div :key="index" class="items">
+            <div :key="index" class="items" ref="items">
               <a href="#" class="item">
                 <div class="price">$25</div>
                 <div class="photo">
-                  <img class="horizontal" src="images/shop_01.jpg">
+                  <img src="images/shop_01.jpg">
                 </div>
               </a>
               <a href="#" class="item">
                 <div class="price">$30</div>
                 <div class="photo">
-                  <img class="horizontal" src="images/shop_02.jpg">
+                  <img src="images/shop_02.jpg">
                 </div>
               </a>
               <a href="#" class="item">
                 <div class="price">$35</div>
                 <div class="photo">
-                  <img class="vertical" src="images/shop_03.jpg">
+                  <img src="images/shop_03.jpg">
                 </div>
               </a>
               <a href="#" class="item">
                 <div class="price">$25</div>
                 <div class="photo">
-                  <img class="horizontal" src="images/shop_04.jpg">
+                  <img src="images/shop_04.jpg">
                 </div>
               </a>
               <a href="#" class="item">
                 <div class="price">$30</div>
                 <div class="photo">
-                  <img class="vertical" src="images/shop_05.jpg">
+                  <img src="images/shop_05.jpg">
                 </div>
               </a>
               <a href="#" class="item">
                 <div class="price">$35</div>
                 <div class="photo">
-                  <img class="horizontal" src="images/shop_06.jpg">
+                  <img src="images/shop_06.jpg">
                 </div>
               </a>
             </div>
@@ -252,7 +252,7 @@
       <div class="info-wrapper">
         <div class="info right">
           <h2>Get in touch</h2>
-          <h1>Wanna say hello<br>&nbsp;or hire me for your<br>&nbsp;next event?</h1>
+          <h1>Wanna say hello or hire me for your next event?</h1>
           <a class="btn" href="#">Send a message</a>
         </div>
       </div>
@@ -286,7 +286,7 @@
           <a href="#" class="fa fa-youtube-play"></a>
         </div>
         <div class="copyrights">
-          &copy; 2017 Sophia McGregor.<br>&nbsp;All rights reserved.
+          &copy; 2017 Sophia McGregor. All rights reserved.
         </div>
       </div>
     </footer>
@@ -295,7 +295,6 @@
     <!-- bower:js -->
     <script src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script src="/bower_components/vue/dist/vue.min.js"></script>
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/get-size/get-size.js"></script>
     <script src="/bower_components/ev-emitter/ev-emitter.js"></script>
     <script src="/bower_components/desandro-matches-selector/matches-selector.js"></script>

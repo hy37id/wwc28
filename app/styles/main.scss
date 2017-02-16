@@ -1,7 +1,7 @@
 // bower:scss
 // endbower
 
-@import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:300,500|Josefin+Sans:300,300i,400,600');
+@import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:300,500|Josefin+Sans:300,600');
 
 @import "variables";
 
@@ -91,10 +91,14 @@ a {
 }
 
 .info {
+  width: 100%;
   min-width: 150px;
-  margin: 2em;
+  margin: 1.5rem;
   font-size: 9px;
-  @include tablet-portrait-up { font-size: 14px; }
+  @include tablet-portrait-up {
+    width: auto;
+    font-size: 13px;
+  }
   @include desktop-up { font-size: 16px; }
   &.center { text-align: center; }
   &.left { text-align: left; }
@@ -105,9 +109,6 @@ a {
   h1 {
     margin: 10px 0 0;
     font: 300 2.4em "Frank Ruhl Libre", serif;
-    br {
-      @include phone-only { display: none; }
-    }
   }
   h2 {
     margin: 0;
@@ -116,6 +117,21 @@ a {
     color: $pink;
   }
   .btn { margin-top: 20px; }
+  @include tablet-portrait-up {
+    #services & h1 { max-width: 12.5em; }
+    #albums & h1 { max-width: 9.5em; }
+    #thoughts & h1 { max-width: 10.5em; }
+    #about & h1 { max-width: 9em; }
+    #shop & h1 { max-width: 10em; }
+    #contact & h1 { max-width: 8.5em; }
+  }
+}
+
+.info-wrapper {
+  @include tablet-portrait-up {
+    @include flex(column, nowrap, center, center);
+    flex: 1;
+  }
 }
 
 .background-text {
@@ -406,16 +422,20 @@ a {
   @include flex(row, nowrap);
   position: relative;
   .info-wrapper {
-    @extend %flex-center;
-    flex: 1;
     @include phone-only {
       position: absolute;
       left: 10%;
       top: 50%;
       right: 10%;
+      padding: 1em;
       background: rgba($white, 0.85);
       z-index: 3;
       transform: translateY(-50%);
+      .info {
+        // IE11 fix
+        width: 100%;
+        margin: 0;
+      }
     }
   }
   .gallery {
@@ -426,7 +446,7 @@ a {
     .grid-sizer { width: 25%; }
     .image {
       $width: 25%;
-      $height: calc(100% / 3);
+      $height: percentage(1 / 3);
       @extend %flex-center;
       position: relative;
       width: $width;
@@ -497,10 +517,9 @@ a {
     }
   }
   .items-wrapper {
-    flex: 1;
-    height: 590px;
     position: relative;
-    max-width: $content;
+    width: $content;
+    height: 590px;
     @include tablet-landscape-up { height: 280px; }
   }
   .items {
@@ -564,11 +583,9 @@ a {
   position: relative;
   @include tablet-portrait-up {
     @include flex(row, wrap);
-    height: 540px;
   }
   .photo {
     flex: 1;
-    min-width: 200px;
     min-height: 250px;
     background: url("../images/unsplash/lzeaynwm4ro-camila-cordeiro.jpg") no-repeat center;
     background-size: cover;
@@ -576,10 +593,10 @@ a {
       order: 2;
       margin-top: 20px;
     }
-  }
-  .info-wrapper {
-    @extend %flex-center;
-    flex: 1;
+    @include tablet-portrait-up {
+      flex-direction: row;
+      height: 540px;
+    }
   }
   &::after {
     @extend .background-text;
@@ -595,7 +612,7 @@ a {
   @include tablet-landscape-up { padding: 110px 0 130px; }
   .info { align-self: center; }
   .navigation {
-    @include flex(row, nowrap, space-between, center);
+    @include flex(row, nowrap, space-around, center);
     .button {
       @extend %flex-center;
       flex: none;
@@ -609,9 +626,8 @@ a {
     }
   }
   .items-wrapper {
-    flex: 1;
     position: relative;
-    max-width: $content;
+    width: $content;
     margin-top: 20px;
     @include tablet-portrait-up {
       transform: translateY(-20px);
@@ -630,11 +646,14 @@ a {
       @extend %flex-center;
       position: relative;
       width: 100%;
-      height: 300px;
       margin-bottom: 20px;
-      padding: 15px 12px;
+      padding: 45px 12px 20px;
       background: $grey1;
-      @include tablet-portrait-up { width: 47%; }
+      @include tablet-portrait-up {
+        width: 47%;
+        height: 300px;
+        padding: 15px 12px;
+      }
       @include tablet-landscape-up { width: 31%; }
       > * { cursor: inherit; }
       &:hover img {
@@ -645,28 +664,25 @@ a {
         position: absolute;
         top: 15px;
         left: 12px;
-        font: 500 1.4em "Frank Ruhl Libre", serif;
+        font: 500 1.1em "Frank Ruhl Libre", serif;
         color: $pink;
+        @include tablet-portrait-up { font-size: 1.4em; }
       }
       .photo {
         @extend %flex-center;
+        position: relative;
+        height: 200px;
         width: 100%;
-        height: 100%;
         max-width: 200px;
-        max-height: 200px;
         img {
+          @extend %absolute;
+          max-width: 100%;
+          max-height: 100%;
+          margin: auto;
           border: 2px solid $white;
           box-shadow: 0 0 30px rgba($black, 0.3);
           cursor: inherit;
           transition: all 0.3s;
-          &.horizontal {
-            width: 100%;
-            height: auto;
-          }
-          &.vertical {
-            width: auto;
-            height: 90%;
-          }
         }
       }
     }
@@ -678,28 +694,28 @@ a {
 }
 
 #contact {
-  @include flex(row, wrap);
+  @include flex(column);
   position: relative;
-  .info-wrapper {
-    @extend %flex-center;
-    flex: 1;
-  }
+  @include tablet-portrait-up { flex-direction: row; }
   .details {
     @extend %flex-center;
-    flex: 1;
-    min-width: 165px;
     padding: 10px 0;
     background: $pink;
     @include phone-only { margin-top: 20px; }
-    @include tablet-portrait-up { padding: 75px 0; }
+    @include tablet-portrait-up {
+      flex: 1;
+      padding: 75px 0;
+    }
     dl {
       @include flex(column);
-      width: 65%;
+      width: 100%;
       margin: 0;
+      padding: 0 1.5rem;
       color: $white;
+      @include tablet-portrait-up { width: 65%; }
       dt {
         padding: 40px 0 0;
-        font: 400 0.7em "Josefin Sans", sans-serif;
+        font: 600 0.7em "Josefin Sans", sans-serif;
         text-transform: uppercase;
       }
       dd {

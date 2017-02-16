@@ -132,7 +132,6 @@ const Shop = new Vue({
   data: {
     itemsHeight: 0,
     initialized: false,
-    currentMediaQuery: null,
     direction: 'right',
     index: 0
   },
@@ -160,8 +159,7 @@ const Shop = new Vue({
       200
     ),
     calculateHeight () {
-      const itemsHeight = $(this.$el).find('.items').height()
-      this.itemsHeight = itemsHeight
+      this.itemsHeight = this.$refs.items.clientHeight
     },
     slideLeft () {
       this.index--
